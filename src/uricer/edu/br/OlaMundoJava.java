@@ -36,16 +36,18 @@ public class OlaMundoJava extends javax.swing.JFrame {
         jTextEntrada = new javax.swing.JTextField();
         jBotao = new javax.swing.JButton();
         textArea = new java.awt.TextArea();
-        jFormattedText = new javax.swing.JFormattedTextField();
         jSpinner1 = new javax.swing.JSpinner();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jScrollBar1 = new javax.swing.JScrollBar();
         jSlider1 = new javax.swing.JSlider();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         senhaText = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        lblVerificaCpf = new javax.swing.JLabel();
+        jFormattedText = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,20 +84,10 @@ public class OlaMundoJava extends javax.swing.JFrame {
         });
         jPanel1.add(jBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, 30));
         jPanel1.add(textArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 720, -1));
-
-        jFormattedText.setText("jFormatted");
-        jFormattedText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jFormattedText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
         jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 560, 10));
 
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 170, 60));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 10, 240));
         jPanel1.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
         jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
 
@@ -136,11 +128,60 @@ public class OlaMundoJava extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 270, 90));
 
+        jPanel3.setBackground(new java.awt.Color(102, 255, 51));
+
+        lblVerificaCpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblVerificaCpf.setText("VERIFICA CPF");
+
+        try {
+            jFormattedText.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextActionPerformed(evt);
+            }
+        });
+        jFormattedText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jFormattedTextKeyPressed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jTextPane);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jFormattedText)
+                    .addComponent(lblVerificaCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblVerificaCpf)
+                .addGap(18, 18, 18)
+                .addComponent(jFormattedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 140, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -210,7 +251,7 @@ public class OlaMundoJava extends javax.swing.JFrame {
     private void senhaTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaTextKeyPressed
         // Ao pressionar a tecla enter0
       
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){ //Se o usuário digitar ENTER
             if(chekLogin(senhaText.getText())){
                 textArea.setText(null);
                 textArea.setText("*********** WWWOOOWWWWW********\n *********PARABENS FODAO**********\n UEUEUEUEUUEUEUUUEUEUEUEUUEUEUEUUEUE");
@@ -225,6 +266,27 @@ public class OlaMundoJava extends javax.swing.JFrame {
     private void jFormattedTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextActionPerformed
+    
+    public boolean verificaCpf(String cpf){
+   
+        if (cpf.length() == 14) //Conta os pontos e traços
+            return true;
+        else
+            return false;
+    }
+    
+    private void jFormattedTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){//Se o usuário digitar ENTER
+            if(verificaCpf(jFormattedText.getText()) == true){
+                jTextPane.setText(null);
+                jTextPane.setText("---CPF VALIDADO---");
+            }else{
+                jTextPane.setText(null);
+                jTextPane.setText("---CPF INVALIDO---");
+            }
+        }
+    }//GEN-LAST:event_jFormattedTextKeyPressed
 
     
     private void jBotaoMouseClicked(java.awt.event.MouseEvent evt){
@@ -273,14 +335,16 @@ public class OlaMundoJava extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextEntrada;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblVerificaCpf;
     private javax.swing.JPasswordField senhaText;
     private java.awt.TextArea textArea;
     // End of variables declaration//GEN-END:variables
